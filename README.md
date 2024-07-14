@@ -1,0 +1,1 @@
+This repository comprises some materials for PCG (Python Course for Geoscientists) batch VIII. It only consists of functions, classes, and introduction to machine learning.
