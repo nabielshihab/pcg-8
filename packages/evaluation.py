@@ -127,34 +127,34 @@ def smooth_curve(points, factor=0.75):
     return smoothed_points
 
 
-def plot_loss(history):
+def plot_loss(clf):
     """
     plot training and validation loss during model training
 
     Parameters:
     -----------
-    history: {list} keras.callbacks.History
+    clf: {KerasClassifier} classifier model
     """
     fig, ax = plt.subplots()
-    ax.plot(smooth_curve(history.history['loss']), label='Train loss')
-    ax.plot(smooth_curve(history.history['val_loss']), label='Val loss')
+    ax.plot(smooth_curve(clf.history_['loss']), label='Train loss')
+    ax.plot(smooth_curve(clf.history_['val_loss']), label='Val loss')
     ax.set(xlabel='Epoch', ylabel='Binary crossentropy')
     ax.legend()
     fig.show()
 
 
-def plot_metric(history, metric='precision'):
+def plot_metric(clf, metric='precision'):
     """
     plot training and validation metric during model training
 
     Parameters:
     -----------
-    history: {list} keras.callbacks.History
+    clf: {KerasClassifier} classifier model
     metrics: {str} one of the keys in history.history dictionary
     """
     fig, ax = plt.subplots()
-    ax.plot(smooth_curve(history.history[metric]), label=f'Train {metric}')
-    ax.plot(smooth_curve(history.history[f'val_{metric}']), label=f'Val {metric}')
+    ax.plot(smooth_curve(clf.history_[metric]), label=f'Train {metric}')
+    ax.plot(smooth_curve(clf.history_[f'val_{metric}']), label=f'Val {metric}')
     ax.set(xlabel='Epoch', ylabel=metric.title())
     ax.legend()
     fig.show()
